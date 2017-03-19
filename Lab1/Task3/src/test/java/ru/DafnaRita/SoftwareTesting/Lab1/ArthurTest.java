@@ -1,6 +1,12 @@
 package ru.DafnaRita.SoftwareTesting.Lab1;
 
+import org.junit.After;
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -8,44 +14,36 @@ import static org.junit.Assert.*;
  * Created by Максимов on 17.03.2017.
  */
 public class ArthurTest {
+    Stuff stuff;
+    Arthur arthur;
+    Eyes eyes;
+
+    @Before
+    public void Init(){
+        stuff = new Stuff(5);
+        eyes = new Eyes();
+        arthur = new Arthur(eyes, Emotions.STUNNED);
+    }
 
     @Test
     public void comeInTest(){
-        Arthur a = new Arthur();
-        a.emotion=Emotions.NERVOUNESS;
-        a.inRoom=false;
-        a.comeIn();
-        assertEquals(a.inRoom,true);
+        assertTrue(arthur.comeIn());
     }
 
     @Test
     public void toSeeSomebodyTest(){
-        Somebody s = new Somebody(0);
-        Arthur a = new Arthur();
-        System.out.println("toSeeSomebodyTest()");
-        a.toSeeSomebody(s);
-        assertEquals(a.emotion,Emotions.SHOCKNESS);
-        System.out.println(++s.heads);
-        a.toSeeSomebody(s);
-        assertEquals(a.emotion,Emotions.NERVOUNESS);
-        System.out.println(++s.heads);
-        a.toSeeSomebody(s);
-        assertEquals(a.emotion,Emotions.ASTONISHMENT);
-        System.out.println(++s.heads);
-        a.toSeeSomebody(s);
-        assertEquals(a.emotion,Emotions.SHOCKNESS);
-
+        arthur.toSeeSomebody();
+        assertEquals(arthur.emotion, Emotions.STUNNED);
     }
 
     @Test
-    public void jawIsLost(){
-        Arthur a = new Arthur();
-        assertEquals(a.jawIsLost(),false);
-        a.emotion=Emotions.ASTONISHMENT;
-        assertEquals(a.jawIsLost(),true);
-        a.emotion=Emotions.SHOCKNESS;
-        assertEquals(a.jawIsLost(), false);
+    public void jawIsLostTest(){
+        assertTrue(arthur.jawIsLost());
+    }
 
+    @Test
+    public void getEyesTest() {
+        assertEquals(arthur.getEyes(), eyes);
     }
 
 }
