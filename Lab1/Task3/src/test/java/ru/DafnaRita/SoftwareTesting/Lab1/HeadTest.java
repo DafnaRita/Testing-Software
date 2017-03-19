@@ -31,6 +31,7 @@ public class HeadTest {
     }
 
 
+
     @Test
     public void getSide1Test(){
         assertEquals(leftHead.getSide(), Side.LEFT);

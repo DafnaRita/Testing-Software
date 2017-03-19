@@ -9,6 +9,7 @@ import static org.junit.Assert.assertTrue;
 public class LegsTest {
     Legs legs;
 
+
     @Before
     public void Init(){
         legs = new Legs();
