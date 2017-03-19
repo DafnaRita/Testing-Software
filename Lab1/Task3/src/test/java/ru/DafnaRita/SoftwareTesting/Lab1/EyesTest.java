@@ -20,6 +20,7 @@ public class EyesTest {
         arthur = new Arthur(eyes, Emotions.STUNNED);
     }
 
+
     @Test
     public void believeTrueTest(){
         eyes.believe(true);

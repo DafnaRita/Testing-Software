@@ -1,18 +1,10 @@
 package ru.DafnaRita.SoftwareTesting.Lab1;
 
-import org.junit.After;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.Assert.*;
 
-/**
- * Created by Максимов on 17.03.2017.
- */
 public class ArthurTest {
     Stuff stuff;
     Arthur arthur;
@@ -26,8 +18,26 @@ public class ArthurTest {
     }
 
     @Test
-    public void comeInTest(){
+    public void comeInTest1() {
         assertTrue(arthur.comeIn());
+    }
+
+    @Test
+    public void comeInTest2(){
+        arthur.comeIn();
+        assertTrue(arthur.inRoom);
+    }
+
+    @Test
+    public void comeInTest3(){
+        arthur.comeIn();
+        assertEquals(arthur.emotion, Emotions.STUNNED);
+    }
+
+    @Test
+    public void comeInTest4(){
+        arthur.comeIn();
+        assertTrue(arthur.isJawIsLost);
     }
 
     @Test
@@ -38,7 +48,8 @@ public class ArthurTest {
 
     @Test
     public void jawIsLostTest(){
-        assertTrue(arthur.jawIsLost());
+        arthur.jawIsLost();
+        assertTrue(arthur.isJawIsLost);
     }
 
     @Test
@@ -46,4 +57,15 @@ public class ArthurTest {
         assertEquals(arthur.getEyes(), eyes);
     }
 
+    @Test
+    public void believeEyesTrueTest() {
+        arthur.believeEyes(true);
+        assertTrue(eyes.belief);
+    }
+
+    @Test
+    public void believeEyesFalseTest() {
+        arthur.believeEyes(false);
+        assertFalse(eyes.belief);
+    }
 }
