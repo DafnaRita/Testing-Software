@@ -5,20 +5,30 @@ package ru.DafnaRita.SoftwareTesting.Lab1;
  */
 public class Arthur {
     Emotions emotion;
-    boolean inRoom = false;
+    boolean inRoom;
+    boolean isJawIsLost;
     Eyes eyes;
 
     Arthur(Eyes eyes, Emotions emotion) {
+        this.isJawIsLost = false;
+        this.inRoom = false;
         this.eyes = eyes;
         this.emotion = emotion;
     }
 
-    public Eyes getEyes() {
-        return eyes;
+    public void believeEyes(Boolean b) {
+        emotion = Emotions.UNBELIEVABLY;
+        this.eyes.believe(b);
     }
 
+    public Eyes getEyes() {
+        return this.eyes;
+    }
 
     boolean comeIn(){
+        inRoom = true;
+        emotion = Emotions.STUNNED;
+        this.jawIsLost();
         return true;
     }
 
@@ -26,7 +36,7 @@ public class Arthur {
         emotion = Emotions.STUNNED;
     }
 
-    boolean jawIsLost() {
-       return true;
+    void jawIsLost() {
+        this.isJawIsLost = true;
     }
 }

@@ -48,10 +48,13 @@ public class Main {
 
         Stuff stuff = new Stuff(5);
 
-        Arthur arthur = new Arthur(new Eyes(), Emotions.NERVOUNESS);
+        Eyes eyes = new Eyes();
+        Arthur arthur = new Arthur(eyes, Emotions.NERVOUNESS);
         arthur.comeIn();
+        arthur.believeEyes(true);
+        arthur.believeEyes(false);
         arthur.getEyes().lookAtStuff(stuff);
-        arthur.getEyes().believe(false);
         arthur.jawIsLost();
     }
 }
+

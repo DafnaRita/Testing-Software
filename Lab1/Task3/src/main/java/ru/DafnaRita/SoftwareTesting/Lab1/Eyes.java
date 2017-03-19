@@ -5,7 +5,7 @@ package ru.DafnaRita.SoftwareTesting.Lab1;
  */
 public class Eyes {
     Boolean belief;
-    public void believe(Boolean b){
+    public void believe(Boolean b) {
         this.belief = b;
     }
 
@@ -13,3 +13,4 @@ public class Eyes {
         return stuff.raise();
     }
 }
+
