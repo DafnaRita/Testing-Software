@@ -4,24 +4,29 @@ package ru.DafnaRita.SoftwareTesting.Lab1;
  * Created by Максимов on 17.03.2017.
  */
 public class Arthur {
-    Emotions emotion = Emotions.NERVOUNESS;
+    Emotions emotion;
     boolean inRoom = false;
+    Eyes eyes;
 
-    void comeIn(){
-        if (emotion==Emotions.NERVOUNESS && !inRoom)
-            inRoom=true;
+    Arthur(Eyes eyes, Emotions emotion) {
+        this.eyes = eyes;
+        this.emotion = emotion;
     }
 
-    void toSeeSomebody(Somebody s){
-        switch (s.heads){
-            case 1: emotion=Emotions.NERVOUNESS; break;
-            case 2: emotion=Emotions.ASTONISHMENT; break;
-            default: emotion=Emotions.SHOCKNESS;
-        }
+    public Eyes getEyes() {
+        return eyes;
+    }
+
+
+    boolean comeIn(){
+        return true;
+    }
+
+    void toSeeSomebody(){
+        emotion = Emotions.STUNNED;
     }
 
     boolean jawIsLost() {
-        if (emotion == Emotions.ASTONISHMENT) return true;
-        return false;
+       return true;
     }
 }
