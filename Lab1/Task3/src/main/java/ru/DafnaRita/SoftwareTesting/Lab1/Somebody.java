@@ -1,54 +1,58 @@
 package ru.DafnaRita.SoftwareTesting.Lab1;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-/**
- * Created by Максимов on 17.03.2017.
- */
 public class Somebody  {
-    Map<Side, Head> heads;
-    List<Hand> hands;
-    boolean inChair;
+    Head leftHead;
+    Head rightHead;
+
+    Hand leftHands;
+    Hand rightHands;
+
     Legs legs;
 
-    Somebody(List<Hand> hands, Legs legs, Head... h){
-        this.hands = hands;
+    Boolean isSeen;
+
+    Somebody(Hand leftHands,Hand rightHands, Legs legs, Head leftHead, Head rightHead){
+        this.leftHands = leftHands;
+        this.rightHands = rightHands;
+
         this.legs = legs;
-        this.heads = new HashMap<Side, Head>();
-        for(Head head : h) {
-            heads.put(head.getSide(), head);
-        }
+
+        this.leftHead = leftHead;
+        this.rightHead = rightHead;
     }
 
-    Head getHead(Side side) throws Exception{
-        if (heads.get(side).equals(null)) {
-            return heads.get(side);
+    Head getHead(Side side) {
+        if (side == Side.LEFT) {
+            return this.leftHead;
         }
-        else {
-            throw new Exception("There isn't the kind of head");
-        }
+
+        return this.rightHead;
     }
 
-    public Legs getLegs() {
-        return legs;
+    Hand getHand(Side side) {
+        if (side == Side.LEFT) {
+            return this.leftHands;
+        }
+
+        return this.rightHands;
     }
 
-    Hand getHand(Side side) throws Exception {
-        for(int i = 0; i < hands.size(); i++) {
-            if(hands.get(i).side == side) {
-                return hands.get(i);
+    void pickInTeeth(Side handSide, Side headSide) {
+        try{
+            if(this.getHand(handSide) == leftHands){
+                this.getHead(headSide).pick(this.leftHands);
+            } else if (this.getHand(handSide) == rightHands){
+                this.getHead(headSide).pick(this.rightHands);
+            } else {
+                throw new Exception("Unknown hand");
             }
+        } catch (Exception e){
+            System.out.println("pickInTeeth error: " + e.getMessage());
         }
-        throw new Exception("There isn't the kind of hand");
     }
 
-    Boolean pickIn(Teeth teeth) {
-        return true;
-    }
-
-    void layInChair(Boolean b){
-        inChair = b;
+    void louge(Chair chair) {
+        chair.lounged = true;
+        chair.loungeBy = this;
     }
 }

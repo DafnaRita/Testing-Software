@@ -6,66 +6,57 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class ArthurTest {
-    Stuff stuff;
+    Room room;
     Arthur arthur;
     Eyes eyes;
+    SomebodyFactory factory;
+    Stuff stuff;
 
     @Before
     public void Init(){
-        stuff = new Stuff(5);
+        room = new Room();
         eyes = new Eyes();
-        arthur = new Arthur(eyes, Emotions.STUNNED);
+        arthur = new Arthur(eyes);
+        factory = new SomebodyFactory();
+        Stuff stuff;
     }
 
+    /*Артур, нервничая, вошел следом*/
     @Test
-    public void comeInTest1() {
-        assertTrue(arthur.comeIn());
+    public void comeInTest(){
+        arthur.comeIn(room);
+        assertEquals(arthur.emotion, Emotions.NERVOUNESS);
+        assertTrue(room.isVisited);
     }
 
-    @Test
-    public void comeInTest2(){
-        arthur.comeIn();
-        assertTrue(arthur.inRoom);
-    }
-
-    @Test
-    public void comeInTest3(){
-        arthur.comeIn();
-        assertEquals(arthur.emotion, Emotions.STUNNED);
-    }
-
-    @Test
-    public void comeInTest4(){
-        arthur.comeIn();
-        assertTrue(arthur.isJawIsLost);
-    }
-
+    /*был ошеломлен, увидев развалившегося в кресле человека*/
     @Test
     public void toSeeSomebodyTest(){
-        arthur.toSeeSomebody();
-        assertEquals(arthur.emotion, Emotions.STUNNED);
+        arthur.see(factory.somebody);
+        assertEquals(arthur.emotion, Emotions.STUNNED); //был ошеломлен
+        assertTrue(factory.somebody.isSeen); // somebody увиден
     }
 
+    /*Количество вещей, видя которые, Артур не верил своим глазам, все росло*/
     @Test
-    public void jawIsLostTest(){
-        arthur.jawIsLost();
-        assertTrue(arthur.isJawIsLost);
+    public void seeStuff1TimeAndBelieveTest(){
+        arthur.see(stuff);
+        assertEquals(stuff, 1); //1 раз посмотрели
+        assertNotEquals(arthur.emotion, Emotions.UNBELIEVING); //2 раза посмотрели
     }
-
     @Test
-    public void getEyesTest() {
-        assertEquals(arthur.getEyes(), eyes);
+    public void seeStuff2TimeAndNotBelieveTest(){
+        arthur.see(stuff);
+        arthur.see(stuff);
+        assertEquals(stuff, 2); //2 раза посмотрели
+        assertNotEquals(arthur.emotion, Emotions.UNBELIEVING); //2 раза посмотрели
     }
-
     @Test
-    public void believeEyesTrueTest() {
-        arthur.believeEyes(true);
-        assertTrue(eyes.belief);
-    }
-
-    @Test
-    public void believeEyesFalseTest() {
-        arthur.believeEyes(false);
-        assertFalse(eyes.belief);
+    public void seeStuffAndNotBelieveTest(){
+        arthur.see(stuff);
+        arthur.see(stuff);
+        arthur.see(stuff);
+        assertEquals(stuff, 3); //2 раза посмотрели
+        assertEquals(arthur.emotion, Emotions.UNBELIEVING); //2 раза посмотрели
     }
 }

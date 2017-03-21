@@ -1,42 +1,35 @@
 package ru.DafnaRita.SoftwareTesting.Lab1;
 
-/**
- * Created by Максимов on 17.03.2017.
- */
 public class Arthur {
     Emotions emotion;
     boolean inRoom;
-    boolean isJawIsLost;
     Eyes eyes;
+    Jaw jaw;
 
-    Arthur(Eyes eyes, Emotions emotion) {
-        this.isJawIsLost = false;
-        this.inRoom = false;
+
+    Arthur(Eyes eyes) {
         this.eyes = eyes;
+        this.emotion = Emotions.NONE;
+    }
+
+    public void changeEmotion(Emotions emotion) {
         this.emotion = emotion;
     }
 
-    public void believeEyes(Boolean b) {
-        emotion = Emotions.UNBELIEVABLY;
-        this.eyes.believe(b);
+    void comeIn(Room room){
+        this.changeEmotion(Emotions.NERVOUNESS);
+        room.isVisited = true;
     }
 
-    public Eyes getEyes() {
-        return this.eyes;
+    void see(Somebody somebody){
+        somebody.isSeen = true;
+        this.changeEmotion(Emotions.STUNNED); //ошеломлен
     }
 
-    boolean comeIn(){
-        inRoom = true;
-        emotion = Emotions.STUNNED;
-        this.jawIsLost();
-        return true;
-    }
-
-    void toSeeSomebody(){
-        emotion = Emotions.STUNNED;
-    }
-
-    void jawIsLost() {
-        this.isJawIsLost = true;
+    void see(Stuff stuff){
+        stuff.raise();
+        if(stuff.count > 2){
+            this.changeEmotion(Emotions.UNBELIEVING);
+        }
     }
 }

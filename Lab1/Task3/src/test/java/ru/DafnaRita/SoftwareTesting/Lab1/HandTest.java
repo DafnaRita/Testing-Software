@@ -14,10 +14,4 @@ public class HandTest {
         teeth = new Teeth();
         hand = new Hand(Side.LEFT);
     }
-
-    @Test
-    public void pickIn(){
-        assertTrue(hand.pickIn(teeth));
-    }
-
 }

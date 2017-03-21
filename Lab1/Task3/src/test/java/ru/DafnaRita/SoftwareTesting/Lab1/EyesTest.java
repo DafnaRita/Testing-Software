@@ -17,7 +17,7 @@ public class EyesTest {
     public void Init(){
         stuff = new Stuff(5);
         eyes = new Eyes();
-        arthur = new Arthur(eyes, Emotions.STUNNED);
+        arthur = new Arthur(eyes);
     }
 
 

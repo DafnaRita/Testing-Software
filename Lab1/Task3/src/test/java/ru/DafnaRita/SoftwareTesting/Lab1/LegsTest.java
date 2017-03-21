@@ -17,13 +17,13 @@ public class LegsTest {
 
     @Test
     public void putOnControlPanelTrueTest(){
-        legs.putOnControlPanel(true);
+        legs.putOnConsole(true);
         assertTrue(legs.isOnControlPanel());
     }
 
     @Test
     public void putOnControlPanelFalseTest(){
-        legs.putOnControlPanel(false);
+        legs.putOnConsole(false);
         assertFalse(legs.isOnControlPanel());
     }
 }

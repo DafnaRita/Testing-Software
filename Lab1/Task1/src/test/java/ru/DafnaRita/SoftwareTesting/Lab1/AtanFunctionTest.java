@@ -1,9 +1,8 @@
 package ru.DafnaRita.SoftwareTesting.Lab1;
 
-
+import org.junit.Ignore;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
 public class AtanFunctionTest {
@@ -16,23 +15,90 @@ public class AtanFunctionTest {
     }
 
     @Test
-    public void atanAllowableTest1 () {
-        double value = 0.23;
+    @Ignore
+    public void atan1Test1 () {
+        double value = -999999999;
         if (!equals(AtanFunction.getAtan(value), Math.atan(value))) {
             fail("AtanFunction.getAtan() test failed for EPSILON=" + EPSILON);
         }
     }
 
     @Test
-    public void atanAllowableTest2 () {
-        double value = -0.23;
+    @Ignore
+    public void atan1Test2 () {
+        double value = -500;
         if (!equals(AtanFunction.getAtan(value), Math.atan(value))) {
             fail("AtanFunction.getAtan() test failed for EPSILON=" + EPSILON);
         }
     }
 
     @Test
-    public void atanAllowableTest3 () {
+    @Ignore
+    public void atan1Test3 () {
+        double value = -2;
+        if (!equals(AtanFunction.getAtan(value), Math.atan(value))) {
+            fail("AtanFunction.getAtan() test failed for EPSILON=" + EPSILON);
+        }
+    }
+
+    @Test
+    @Ignore
+    public void atan2Test1 () {
+        double value = -0.9;
+        if (!equals(AtanFunction.getAtan(value), Math.atan(value))) {
+            fail("AtanFunction.getAtan() test failed for EPSILON=" + EPSILON);
+        }
+    }
+
+
+    @Test
+    @Ignore
+    public void atan2Test2 () {
+        double value = -0.8;
+        if (!equals(AtanFunction.getAtan(value), Math.atan(value))) {
+            fail("AtanFunction.getAtan() test failed for EPSILON=" + EPSILON);
+        }
+    }
+
+    @Test
+    @Ignore
+    public void atan2Test3 () {
+        double value = -0.2;
+        if (!equals(AtanFunction.getAtan(value), Math.atan(value))) {
+            fail("AtanFunction.getAtan() test failed for EPSILON=" + EPSILON);
+        }
+    }
+
+    @Test
+    @Ignore
+    public void atan3Test1 () {
+        double value = 0.2;
+        if (!equals(AtanFunction.getAtan(value), Math.atan(value))) {
+            fail("AtanFunction.getAtan() test failed for EPSILON=" + EPSILON);
+        }
+    }
+
+    @Test
+    @Ignore
+    public void atan3Test2 () {
+        double value = 0.4;
+        if (!equals(AtanFunction.getAtan(value), Math.atan(value))) {
+            fail("AtanFunction.getAtan() test failed for EPSILON=" + EPSILON);
+        }
+    }
+
+    @Test
+    @Ignore
+    public void atan3Test3 () {
+        double value = 0.8;
+        if (!equals(AtanFunction.getAtan(value), Math.atan(value))) {
+            fail("AtanFunction.getAtan() test failed for EPSILON=" + EPSILON);
+        }
+    }
+
+    @Test
+    @Ignore
+    public void atan3Test4 () {
         double value = 0.9;
         if (!equals(AtanFunction.getAtan(value), Math.atan(value))) {
             fail("AtanFunction.getAtan() test failed for EPSILON=" + EPSILON);
@@ -40,58 +106,103 @@ public class AtanFunctionTest {
     }
 
     @Test
-    public void atanAllowableTest4 () {
-        double value = -0.9;
+    @Ignore
+    public void atan4Test1 () {
+        double value = 5;
+        if (!equals(AtanFunction.getAtan(value), Math.atan(value))) {
+            fail("AtanFunction.getAtan() test failed for EPSILON=" + EPSILON);
+        }
+    }
+
+    @Test
+    @Ignore
+    public void atan4Test2 () {
+        double value = 500;
+        if (!equals(AtanFunction.getAtan(value), Math.atan(value))) {
+            fail("AtanFunction.getAtan() test failed for EPSILON=" + EPSILON);
+        }
+    }
+
+    @Test
+    @Ignore
+    public void atan4Test3 () {
+        double value = 99999;
+        if (!equals(AtanFunction.getAtan(value), Math.atan(value))) {
+            fail("AtanFunction.getAtan() test failed for EPSILON=" + EPSILON);
+        }
+    }
+/*
+*
+ */
+    @Test
+    public void atanPoint1Test1 () {
+        double value = -1 - EPSILON;
+        if (!equals(AtanFunction.getAtan(value), Math.atan(value))) {
+            fail("AtanFunction.getAtan() test failed for EPSILON=" + EPSILON);
+        }
+    }
+
+    @Test
+    public void atanPoint1Test2 () {
+        double value = -1;
+        if (!equals(AtanFunction.getAtan(value), Math.atan(value))) {
+            fail("AtanFunction.getAtan() test failed for EPSILON=" + EPSILON);
+        }
+    }
+
+    @Test
+    public void atanPoint1Test3 () {
+        double value = -1 + EPSILON;
+        if (!equals(AtanFunction.getAtan(value), Math.atan(value))) {
+            fail("AtanFunction.getAtan() test failed for EPSILON=" + EPSILON);
+        }
+    }
+
+    @Test
+    public void atanPoint2Test1 () {
+        double value = 0 -EPSILON;
+        if (!equals(AtanFunction.getAtan(value), Math.atan(value))) {
+            fail("AtanFunction.getAtan() test failed for EPSILON=" + EPSILON);
+        }
+    }
+
+    @Test
+    public void atanPoint2Test2 () {
+        double value = 0;
+        if (!equals(AtanFunction.getAtan(value), Math.atan(value))) {
+            fail("AtanFunction.getAtan() test failed for EPSILON=" + EPSILON);
+        }
+    }
+
+    @Test
+    public void atanPoint2Test3 () {
+        double value = 0 + EPSILON;
         if (!equals(AtanFunction.getAtan(value), Math.atan(value))) {
             fail("AtanFunction.getAtan() test failed for EPSILON=" + EPSILON);
         }
     }
 
     @Test (expected = RuntimeException.class)
-    public void atanNotAllowableTestNegative3345345 () {
-        double value = -3345345;
-        try {
-            AtanFunction.getAtan(value);
-        } catch (RuntimeException e) {
-            String message = "Error: the value must be between -1 to 1";
-            assertEquals(message, e.getMessage());
-            throw e;
+    public void atanPoint3Test1 () {
+        double value = 1 - EPSILON;
+        if (!equals(AtanFunction.getAtan(value), Math.atan(value))) {
+            fail("AtanFunction.getAtan() test failed for EPSILON=" + EPSILON);
         }
     }
 
     @Test (expected = RuntimeException.class)
-    public void atanNotAllowableTest234234 () {
-        double value = 234234;
-        try {
-            AtanFunction.getAtan(value);
-        } catch (RuntimeException e) {
-            String message = "Error: the value must be between -1 to 1";
-            assertEquals(message, e.getMessage());
-            throw e;
+    public void atanPoint3Test2 () {
+        double value = 1 ;
+        if (!equals(AtanFunction.getAtan(value), Math.atan(value))) {
+            fail("AtanFunction.getAtan() test failed for EPSILON=" + EPSILON);
         }
     }
 
     @Test (expected = RuntimeException.class)
-    public void atanNotAllowableTest3 () {
-        double value = 3;
-        try {
-            AtanFunction.getAtan(value);
-        } catch (RuntimeException e) {
-            String message = "Error: the value must be between -1 to 1";
-            assertEquals(message, e.getMessage());
-            throw e;
-        }
-    }
-
-    @Test (expected = RuntimeException.class)
-    public void atanNotAllowableTest5 () {
-        double value = 5;
-        try {
-            AtanFunction.getAtan(value);
-        } catch (RuntimeException e) {
-            String message = "Error: the value must be between -1 to 1";
-            assertEquals(message, e.getMessage());
-            throw e;
+    public void atanPoint3Test3 () {
+        double value = 1 + EPSILON;
+        if (!equals(AtanFunction.getAtan(value), Math.atan(value))) {
+            fail("AtanFunction.getAtan() test failed for EPSILON=" + EPSILON);
         }
     }
 }

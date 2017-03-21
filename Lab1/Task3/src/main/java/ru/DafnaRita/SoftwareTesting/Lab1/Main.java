@@ -14,15 +14,13 @@ public class Main {
     Somebody createSomebody() {
         Main main = new Main();
 
-        List<Hand> hands = new ArrayList<Hand>();
-
         Hand left = new Hand(Side.LEFT);
         Hand right = new Hand(Side.RIGHT);
-        hands.add(left);
 
         Legs legs = new Legs();
         return new Somebody(
-                hands,
+                left,
+                right,
                 legs,
                 main.createHead(Side.RIGHT),
                 main.createHead(Side.LEFT)
@@ -32,29 +30,16 @@ public class Main {
     public static void main(String[] args) {
         Main main = new Main();
         Somebody somebody = main.createSomebody();
-        somebody.layInChair(true);
-
-        try {
-            Hand hand = somebody.getHand(Side.RIGHT);
-            hand.pickIn(
-            somebody.getHead(Side.RIGHT).getTeeth()
-            );
-            somebody.getLegs().putOnControlPanel(true);
-            somebody.getHead(Side.LEFT).smile();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-
 
         Stuff stuff = new Stuff(5);
 
         Eyes eyes = new Eyes();
-        Arthur arthur = new Arthur(eyes, Emotions.NERVOUNESS);
+        Arthur arthur = new Arthur(eyes);//
         arthur.comeIn();
-        arthur.believeEyes(true);
-        arthur.believeEyes(false);
-        arthur.getEyes().lookAtStuff(stuff);
-        arthur.jawIsLost();
+        arthur.see(somebody);//changeEmotion
+
+        somebody.pickInTeeth(Side.LEFT, Side.RIGHT);
+        somebody.pickInTeeth(Side.LEFT, Side.RIGHT);
     }
 }
 

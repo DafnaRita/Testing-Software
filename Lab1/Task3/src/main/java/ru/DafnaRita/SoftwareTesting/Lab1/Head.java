@@ -12,16 +12,9 @@ public class Head {
         this.side = side;
     }
 
-    public Teeth getTeeth() {
-        return teeth;
-    }
-
-    public Side getSide() {
-        return side;
-    }
-
-    public Boolean smile() {
-        return true;
+    public void pick(Hand hand) {
+        this.teeth.isPicked = true;
+        this.teeth.pickedBy = hand;
     }
 }
 

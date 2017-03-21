@@ -10,8 +10,8 @@ public class Hand {
         this.side = side;
     }
 
-    public Boolean pickIn(Teeth teeth) {
-        return true;
+    public void pickInTeeth(Teeth teeth){
+        teeth.pickBy(this);
     }
 }
 

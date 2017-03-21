@@ -19,31 +19,4 @@ public class HeadTest {
         leftHead = new Head(teethForLeftHead, Side.LEFT);
         rightHead = new Head(teethForRightHead, Side.RIGHT);
     }
-
-    @Test
-    public void getTeeth1Test(){
-        assertEquals(leftHead.getTeeth(), teethForLeftHead);
-    }
-
-    @Test
-    public void getTeeth2Test(){
-        assertEquals(rightHead.getTeeth(), teethForRightHead);
-    }
-
-
-
-    @Test
-    public void getSide1Test(){
-        assertEquals(leftHead.getSide(), Side.LEFT);
-    }
-
-    @Test
-    public void getSide2Test(){
-        assertEquals(rightHead.getSide(), Side.RIGHT);
-    }
-
-    @Test
-    public void smileTest(){
-        assertTrue(leftHead.smile());
-    }
 }
