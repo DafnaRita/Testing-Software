@@ -1,7 +1,7 @@
 package ru.DafnaRita.SoftwareTesting.Lab1;
 
 public class Teeth {
-    Boolean isPicked;
+    boolean isPicked=false;
     Hand pickedBy;
 
     public void pickBy(Hand hand){

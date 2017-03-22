@@ -6,30 +6,33 @@ public class Arthur {
     Eyes eyes;
     Jaw jaw;
 
-
-    Arthur(Eyes eyes) {
-        this.eyes = eyes;
-        this.emotion = Emotions.NONE;
-    }
-
-    public void changeEmotion(Emotions emotion) {
-        this.emotion = emotion;
+    Arthur() {
+        eyes = new Eyes();
+        jaw = new Jaw();
+        emotion = Emotions.NONE;
     }
 
     void comeIn(Room room){
-        this.changeEmotion(Emotions.NERVOUNESS);
+        emotion=Emotions.NERVOUNESS;
         room.isVisited = true;
     }
 
-    void see(Somebody somebody){
-        somebody.isSeen = true;
-        this.changeEmotion(Emotions.STUNNED); //ошеломлен
+    void see(Zaphod zaphod){
+        zaphod.isSeen = true;
+        if (zaphod.manyHeads)
+            emotion=Emotions.STUNNED;
     }
 
     void see(Stuff stuff){
         stuff.raise();
         if(stuff.count > 2){
-            this.changeEmotion(Emotions.UNBELIEVING);
+            emotion=Emotions.UNBELIEVING;
+            eyes.belief=false;
         }
+    }
+
+    void jawLoss(){
+        if (emotion==Emotions.UNBELIEVING)
+            jaw.isDown=true;
     }
 }

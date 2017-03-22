@@ -7,16 +7,22 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class HeadTest {
-    Head leftHead;
-    Head rightHead;
-    Teeth teethForLeftHead;
-    Teeth teethForRightHead;
+    Head head;
 
     @Before
     public void Init(){
-        teethForLeftHead = new Teeth();
-        teethForRightHead = new Teeth();
-        leftHead = new Head(teethForLeftHead, Side.LEFT);
-        rightHead = new Head(teethForRightHead, Side.RIGHT);
+        head = new Head(Side.LEFT);
+    }
+
+    @Test
+    public void busynessTrueTest(){
+        head.teeth.isPicked=true;
+        assertEquals(true, head.busyness());
+    }
+
+    @Test
+    public void busynessFalseTest(){
+        head.teeth.isPicked=false;
+        assertEquals(false, head.busyness());
     }
 }

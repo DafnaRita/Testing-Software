@@ -5,8 +5,8 @@ package ru.DafnaRita.SoftwareTesting.Lab1;
  */
 public class Stuff {
     int count;
-    Stuff() {
-        this.count = 0;
+    Stuff(int cnt) {
+       count = cnt;
     }
 
     public int raise() {

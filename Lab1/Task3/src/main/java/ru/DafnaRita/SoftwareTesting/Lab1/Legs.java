@@ -1,10 +1,10 @@
 package ru.DafnaRita.SoftwareTesting.Lab1;
 
 public class Legs {
-    public boolean putOnConsole;
+    public boolean putOnConsole=false;
 
     void putOnConsole (Console console){
-        this.putOnConsole = true;
+        putOnConsole = true;
         console.putBy = this;
     }
 }

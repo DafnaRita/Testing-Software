@@ -6,15 +6,15 @@ package ru.DafnaRita.SoftwareTesting.Lab1;
 public class Head {
     Teeth teeth;
     Side side;
+    boolean rastasmile;
 
-    Head(Teeth teeth, Side side) {
-        this.teeth = teeth;
+    Head(Side side) {
+        teeth = new Teeth();
         this.side = side;
     }
 
-    public void pick(Hand hand) {
-        this.teeth.isPicked = true;
-        this.teeth.pickedBy = hand;
+    boolean busyness(){
+        return teeth.isPicked;
     }
 }
 
