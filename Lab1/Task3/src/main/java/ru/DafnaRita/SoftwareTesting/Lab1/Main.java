@@ -3,8 +3,14 @@ package ru.DafnaRita.SoftwareTesting.Lab1;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Margo on 18.03.2017.
+/*Артур, нервничая, вошел следом и был ошеломлен,
+* увидев развалившегося в кресле человека,
+* положившего ноги на пульт управления и
+* ковыряющего левой рукой в зубах правой
+* головы. Правая голова, казалось,
+* была всецело занята этим, но зато левая улыбалась
+* широко и непринужденно. Количество вещей, видя которые,
+ * Артур не верил своим глазам, все росло. Его челюсть отвисла.
  */
 public class Main {
     Head createHead(Side side) {
@@ -29,17 +35,6 @@ public class Main {
 
     public static void main(String[] args) {
         Main main = new Main();
-        Somebody somebody = main.createSomebody();
-
-        Stuff stuff = new Stuff(5);
-
-        Eyes eyes = new Eyes();
-        Arthur arthur = new Arthur(eyes);//
-        arthur.comeIn();
-        arthur.see(somebody);//changeEmotion
-
-        somebody.pickInTeeth(Side.LEFT, Side.RIGHT);
-        somebody.pickInTeeth(Side.LEFT, Side.RIGHT);
     }
 }
 

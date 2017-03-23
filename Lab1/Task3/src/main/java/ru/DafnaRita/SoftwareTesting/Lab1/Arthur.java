@@ -4,12 +4,12 @@ public class Arthur {
     Emotions emotion;
     boolean inRoom;
     Eyes eyes;
-    Jaw jaw;
-
+    Boolean jawIsDown;
 
     Arthur(Eyes eyes) {
         this.eyes = eyes;
         this.emotion = Emotions.NONE;
+        this.jawIsDown = false;
     }
 
     public void changeEmotion(Emotions emotion) {
@@ -28,8 +28,11 @@ public class Arthur {
 
     void see(Stuff stuff){
         stuff.raise();
-        if(stuff.count > 2){
+        if(stuff.count > 2 || stuff.count == 2){
             this.changeEmotion(Emotions.UNBELIEVING);
+        }
+        if(this.emotion == Emotions.UNBELIEVING){
+            this.jawIsDown = true;
         }
     }
 }

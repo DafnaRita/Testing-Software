@@ -18,7 +18,7 @@ public class ArthurTest {
         eyes = new Eyes();
         arthur = new Arthur(eyes);
         factory = new SomebodyFactory();
-        Stuff stuff;
+        stuff = new Stuff();
     }
 
     /*Артур, нервничая, вошел следом*/
@@ -40,23 +40,40 @@ public class ArthurTest {
     /*Количество вещей, видя которые, Артур не верил своим глазам, все росло*/
     @Test
     public void seeStuff1TimeAndBelieveTest(){
+        assertNotEquals(arthur.emotion, Emotions.UNBELIEVING);
         arthur.see(stuff);
-        assertEquals(stuff, 1); //1 раз посмотрели
-        assertNotEquals(arthur.emotion, Emotions.UNBELIEVING); //2 раза посмотрели
+        assertEquals(stuff.count, 1); //1 раз посмотрели
+        assertNotEquals(arthur.emotion, Emotions.UNBELIEVING);
     }
+
+    /*Количество вещей, видя которые, Артур не верил своим глазам, все росло*/
     @Test
-    public void seeStuff2TimeAndNotBelieveTest(){
+    public void seeStuff2TimeAndBelieveTest(){
+        assertNotEquals(arthur.emotion, Emotions.UNBELIEVING);
         arthur.see(stuff);
         arthur.see(stuff);
-        assertEquals(stuff, 2); //2 раза посмотрели
-        assertNotEquals(arthur.emotion, Emotions.UNBELIEVING); //2 раза посмотрели
+        assertEquals(stuff.count, 2); //2 раза посмотрели
+        assertEquals(arthur.emotion, Emotions.UNBELIEVING);
     }
+
+    /*Количество вещей, видя которые, Артур не верил своим глазам, все росло*/
     @Test
     public void seeStuffAndNotBelieveTest(){
+        assertNotEquals(arthur.emotion, Emotions.UNBELIEVING);
         arthur.see(stuff);
         arthur.see(stuff);
         arthur.see(stuff);
-        assertEquals(stuff, 3); //2 раза посмотрели
+        assertEquals(stuff.count, 3); //3 раза посмотрели
         assertEquals(arthur.emotion, Emotions.UNBELIEVING); //2 раза посмотрели
+    }
+
+    /*Его челюсть отвисла(от того что он увидел слишком много странных вещей*/
+    @Test
+    public void asIsDownTest(){
+        assertFalse(arthur.jawIsDown);
+        arthur.see(stuff);
+        arthur.see(stuff);
+        arthur.see(stuff);
+        assertTrue(arthur.jawIsDown);
     }
 }

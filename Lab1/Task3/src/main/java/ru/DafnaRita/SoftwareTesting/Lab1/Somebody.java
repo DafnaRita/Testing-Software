@@ -37,20 +37,6 @@ public class Somebody  {
         return this.rightHands;
     }
 
-    void pickInTeeth(Side handSide, Side headSide) {
-        try{
-            if(this.getHand(handSide) == leftHands){
-                this.getHead(headSide).pick(this.leftHands);
-            } else if (this.getHand(handSide) == rightHands){
-                this.getHead(headSide).pick(this.rightHands);
-            } else {
-                throw new Exception("Unknown hand");
-            }
-        } catch (Exception e){
-            System.out.println("pickInTeeth error: " + e.getMessage());
-        }
-    }
-
     void louge(Chair chair) {
         chair.lounged = true;
         chair.loungeBy = this;
