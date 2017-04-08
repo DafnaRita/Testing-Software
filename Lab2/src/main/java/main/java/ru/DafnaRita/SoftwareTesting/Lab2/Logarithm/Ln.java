@@ -1,7 +1,7 @@
 package main.java.ru.DafnaRita.SoftwareTesting.Lab2.Logarithm;
 
 public class Ln {
-    double precision = 0.000005;  // set this to whatever delta you want
+    static double precision = 0.000005;  // set this to whatever delta you want
 
     public double execute(double x) {
         double y = 0;
