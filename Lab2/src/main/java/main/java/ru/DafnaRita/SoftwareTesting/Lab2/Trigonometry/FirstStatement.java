@@ -18,6 +18,9 @@ public class FirstStatement {
     }
 
     public double execute(double x){
+        if (!(x <= 0)){
+            return Double.NaN;
+        }
         return (((((sin.execute(x) + tan.execute(x))
                 / cot.execute(x))
                 / ((csc.execute(x) + sin.execute(x)) / sin.execute(x)))
