@@ -1,4 +1,4 @@
-package main.java.ru.DafnaRita.SoftwareTesting.Lab2;
+package main.java.ru.DafnaRita.SoftwareTesting.Lab2.Trigonometry;
 
 public class FirstStatement {
     Sin sin;
@@ -8,7 +8,7 @@ public class FirstStatement {
     Tan tan;
     Csc csc;
 
-    FirstStatement(Sin sin, Cos cos, Cot cot, Sec sec, Tan tan, Csc csc){
+    public FirstStatement(Sin sin, Cos cos, Cot cot, Sec sec, Tan tan, Csc csc){
         this.sin = sin;
         this.cos = cos;
         this.cot = cot;

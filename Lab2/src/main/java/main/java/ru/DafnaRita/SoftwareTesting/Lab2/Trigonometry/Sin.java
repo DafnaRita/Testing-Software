@@ -1,8 +1,8 @@
-package main.java.ru.DafnaRita.SoftwareTesting.Lab2;
+package main.java.ru.DafnaRita.SoftwareTesting.Lab2.Trigonometry;
 
 public class Sin {
 
-    double delta = 0.0000005;// or whatever limit you want
+    public double delta = 0.0000005;// or whatever limit you want
     public double execute(double x){
         double sin = 0.;
         int n = 1;
