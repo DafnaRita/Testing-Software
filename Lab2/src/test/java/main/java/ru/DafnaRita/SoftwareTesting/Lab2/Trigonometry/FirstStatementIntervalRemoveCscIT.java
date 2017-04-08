@@ -1,4 +1,4 @@
-package main.java.ru.DafnaRita.SoftwareTesting.Lab2;
+package main.java.ru.DafnaRita.SoftwareTesting.Lab2.Trigonometry;
 
 import org.junit.Assert;
 import org.junit.Before;

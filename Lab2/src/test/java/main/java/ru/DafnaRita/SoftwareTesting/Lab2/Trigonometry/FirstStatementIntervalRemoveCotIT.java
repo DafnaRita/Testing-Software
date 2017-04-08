@@ -1,4 +1,4 @@
-package main.java.ru.DafnaRita.SoftwareTesting.Lab2;
+package main.java.ru.DafnaRita.SoftwareTesting.Lab2.Trigonometry;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -9,13 +9,12 @@ import org.junit.runners.Parameterized;
 import java.util.Arrays;
 import java.util.Collection;
 
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 @RunWith(Parameterized.class)
-public class FirstStatementIntervalRemoveSinIT {
+public class FirstStatementIntervalRemoveCotIT {
     // (0, 0.5pi) - 0.2pi and 0.4pi
     // (0.5pi, pi) - 0.6pi and 0.8pi
     // (pi, 1.5pi) - 1.2pi and 1.4pi
@@ -30,7 +29,7 @@ public class FirstStatementIntervalRemoveSinIT {
     double inputX;
     double expectedX;
 
-    public FirstStatementIntervalRemoveSinIT(double inputX, double expectedX){
+    public FirstStatementIntervalRemoveCotIT(double inputX, double expectedX){
         this.inputX = inputX;
         this.expectedX = expectedX;
     }
@@ -38,8 +37,8 @@ public class FirstStatementIntervalRemoveSinIT {
     @Before
     public void init(){
         sin = new Sin();
-        cos = mock(Cos.class);
-        cot = mock(Cot.class);
+        cos = new Cos(sin);
+        cot = new Cot(sin, cos);
         sec = mock(Sec.class);
         tan = mock(Tan.class);
         csc = mock(Csc.class);
@@ -51,24 +50,6 @@ public class FirstStatementIntervalRemoveSinIT {
                 tan,
                 csc
         );
-
-        when(cos.execute(-0.2*Math.PI)).thenReturn(0.80901699);
-        when(cos.execute(-0.4*Math.PI)).thenReturn(0.309016999);
-        when(cos.execute(-0.6*Math.PI)).thenReturn(-0.309016999);
-        when(cos.execute(-0.8*Math.PI)).thenReturn(-0.80901699);
-        when(cos.execute(-1.2*Math.PI)).thenReturn(-0.80901699);
-        when(cos.execute(-1.4*Math.PI)).thenReturn(-0.309016999);
-        when(cos.execute(-1.6*Math.PI)).thenReturn(0.309016999);
-        when(cos.execute(-1.8*Math.PI)).thenReturn(0.80901699);
-
-        when(cot.execute(-0.2*Math.PI)).thenReturn(-1.3763819);
-        when(cot.execute(-0.4*Math.PI)).thenReturn(-0.3249197);
-        when(cot.execute(-0.6*Math.PI)).thenReturn(0.3249197);
-        when(cot.execute(-0.8*Math.PI)).thenReturn(1.3763819);
-        when(cot.execute(-1.2*Math.PI)).thenReturn(-1.3763819);
-        when(cot.execute(-1.4*Math.PI)).thenReturn(-0.3249197);
-        when(cot.execute(-1.6*Math.PI)).thenReturn(0.3249197);
-        when(cot.execute(-1.8*Math.PI)).thenReturn(1.3763819);
 
         when(sec.execute(-0.2*Math.PI)).thenReturn(1.236068);
         when(sec.execute(-0.4*Math.PI)).thenReturn(3.236068);
@@ -114,11 +95,13 @@ public class FirstStatementIntervalRemoveSinIT {
 
     @Test
     public void pointTest(){
-        if(Math.abs(statement.execute(inputX) - expectedX) < sin.delta*5){
+        if(Math.abs(statement.execute(inputX) - expectedX) < sin.delta*10){
             Assert.assertTrue(true);
         } else {
             fail();
         }
     }
 }
+
+
 

@@ -1,4 +1,4 @@
-package main.java.ru.DafnaRita.SoftwareTesting.Lab2;
+package main.java.ru.DafnaRita.SoftwareTesting.Lab2.Trigonometry;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -14,7 +14,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 @RunWith(Parameterized.class)
-public class FirstStatementIntervalRemoveCotIT {
+public class FirstStatementIntervalRemoveTanIT {
     // (0, 0.5pi) - 0.2pi and 0.4pi
     // (0.5pi, pi) - 0.6pi and 0.8pi
     // (pi, 1.5pi) - 1.2pi and 1.4pi
@@ -29,7 +29,7 @@ public class FirstStatementIntervalRemoveCotIT {
     double inputX;
     double expectedX;
 
-    public FirstStatementIntervalRemoveCotIT(double inputX, double expectedX){
+    public FirstStatementIntervalRemoveTanIT(double inputX, double expectedX){
         this.inputX = inputX;
         this.expectedX = expectedX;
     }
@@ -39,8 +39,8 @@ public class FirstStatementIntervalRemoveCotIT {
         sin = new Sin();
         cos = new Cos(sin);
         cot = new Cot(sin, cos);
-        sec = mock(Sec.class);
-        tan = mock(Tan.class);
+        sec = new Sec(cos, sin);
+        tan = new Tan(sin, cos);
         csc = mock(Csc.class);
         statement = new FirstStatement(
                 sin,
@@ -50,24 +50,6 @@ public class FirstStatementIntervalRemoveCotIT {
                 tan,
                 csc
         );
-
-        when(sec.execute(-0.2*Math.PI)).thenReturn(1.236068);
-        when(sec.execute(-0.4*Math.PI)).thenReturn(3.236068);
-        when(sec.execute(-0.6*Math.PI)).thenReturn(-3.236068);
-        when(sec.execute(-0.8*Math.PI)).thenReturn(-1.236068);
-        when(sec.execute(-1.2*Math.PI)).thenReturn(-1.236068);
-        when(sec.execute(-1.4*Math.PI)).thenReturn(-3.236068);
-        when(sec.execute(-1.6*Math.PI)).thenReturn(3.236068);
-        when(sec.execute(-1.8*Math.PI)).thenReturn(1.236068);
-
-        when(tan.execute(-0.2*Math.PI)).thenReturn(-0.72654253);
-        when(tan.execute(-0.4*Math.PI)).thenReturn(-3.0776835);
-        when(tan.execute(-0.6*Math.PI)).thenReturn(3.0776835);
-        when(tan.execute(-0.8*Math.PI)).thenReturn(0.72654253);
-        when(tan.execute(-1.2*Math.PI)).thenReturn(-0.72654253);
-        when(tan.execute(-1.4*Math.PI)).thenReturn(-3.0776835);
-        when(tan.execute(-1.6*Math.PI)).thenReturn(3.0776835);
-        when(tan.execute(-1.8*Math.PI)).thenReturn(0.72654253);
 
         when(csc.execute(-0.2*Math.PI)).thenReturn(-1.7013016);
         when(csc.execute(-0.4*Math.PI)).thenReturn(-1.0514622);
@@ -95,6 +77,9 @@ public class FirstStatementIntervalRemoveCotIT {
 
     @Test
     public void pointTest(){
+        System.out.println(statement.execute(inputX));
+        System.out.println(expectedX);
+        System.out.println("\n");
         if(Math.abs(statement.execute(inputX) - expectedX) < sin.delta*10){
             Assert.assertTrue(true);
         } else {
@@ -102,6 +87,4 @@ public class FirstStatementIntervalRemoveCotIT {
         }
     }
 }
-
-
 

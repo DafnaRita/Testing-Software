@@ -1,4 +1,4 @@
-package main.java.ru.DafnaRita.SoftwareTesting.Lab2;
+package main.java.ru.DafnaRita.SoftwareTesting.Lab2.Trigonometry;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -14,7 +14,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 @RunWith(Parameterized.class)
-public class FirstStatementIntervalRemoveTanIT {
+public class FirstStatementIntervalRemoveSecIT {
     // (0, 0.5pi) - 0.2pi and 0.4pi
     // (0.5pi, pi) - 0.6pi and 0.8pi
     // (pi, 1.5pi) - 1.2pi and 1.4pi
@@ -29,7 +29,7 @@ public class FirstStatementIntervalRemoveTanIT {
     double inputX;
     double expectedX;
 
-    public FirstStatementIntervalRemoveTanIT(double inputX, double expectedX){
+    public FirstStatementIntervalRemoveSecIT(double inputX, double expectedX){
         this.inputX = inputX;
         this.expectedX = expectedX;
     }
@@ -40,7 +40,7 @@ public class FirstStatementIntervalRemoveTanIT {
         cos = new Cos(sin);
         cot = new Cot(sin, cos);
         sec = new Sec(cos, sin);
-        tan = new Tan(sin, cos);
+        tan = mock(Tan.class);
         csc = mock(Csc.class);
         statement = new FirstStatement(
                 sin,
@@ -50,6 +50,15 @@ public class FirstStatementIntervalRemoveTanIT {
                 tan,
                 csc
         );
+
+        when(tan.execute(-0.2*Math.PI)).thenReturn(-0.72654253);
+        when(tan.execute(-0.4*Math.PI)).thenReturn(-3.0776835);
+        when(tan.execute(-0.6*Math.PI)).thenReturn(3.0776835);
+        when(tan.execute(-0.8*Math.PI)).thenReturn(0.72654253);
+        when(tan.execute(-1.2*Math.PI)).thenReturn(-0.72654253);
+        when(tan.execute(-1.4*Math.PI)).thenReturn(-3.0776835);
+        when(tan.execute(-1.6*Math.PI)).thenReturn(3.0776835);
+        when(tan.execute(-1.8*Math.PI)).thenReturn(0.72654253);
 
         when(csc.execute(-0.2*Math.PI)).thenReturn(-1.7013016);
         when(csc.execute(-0.4*Math.PI)).thenReturn(-1.0514622);
@@ -87,4 +96,7 @@ public class FirstStatementIntervalRemoveTanIT {
         }
     }
 }
+
+
+
 

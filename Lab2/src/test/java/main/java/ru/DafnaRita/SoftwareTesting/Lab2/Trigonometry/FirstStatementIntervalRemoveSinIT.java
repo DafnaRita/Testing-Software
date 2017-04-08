@@ -1,4 +1,4 @@
-package main.java.ru.DafnaRita.SoftwareTesting.Lab2;
+package main.java.ru.DafnaRita.SoftwareTesting.Lab2.Trigonometry;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -14,9 +14,8 @@ import static org.junit.Assert.fail;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-
 @RunWith(Parameterized.class)
-public class FirstStatementIntervalIT {
+public class FirstStatementIntervalRemoveSinIT {
     // (0, 0.5pi) - 0.2pi and 0.4pi
     // (0.5pi, pi) - 0.6pi and 0.8pi
     // (pi, 1.5pi) - 1.2pi and 1.4pi
@@ -31,14 +30,14 @@ public class FirstStatementIntervalIT {
     double inputX;
     double expectedX;
 
-    public FirstStatementIntervalIT(double inputX, double expectedX){
+    public FirstStatementIntervalRemoveSinIT(double inputX, double expectedX){
         this.inputX = inputX;
         this.expectedX = expectedX;
     }
 
     @Before
     public void init(){
-        sin = mock(Sin.class);
+        sin = new Sin();
         cos = mock(Cos.class);
         cot = mock(Cot.class);
         sec = mock(Sec.class);
@@ -52,14 +51,6 @@ public class FirstStatementIntervalIT {
                 tan,
                 csc
         );
-        when(sin.execute(-0.2*Math.PI)).thenReturn(-0.58778525);
-        when(sin.execute(-0.4*Math.PI)).thenReturn(-0.95105652);
-        when(sin.execute(-0.6*Math.PI)).thenReturn(-0.95105652);
-        when(sin.execute(-0.8*Math.PI)).thenReturn(-0.58778525);
-        when(sin.execute(-1.2*Math.PI)).thenReturn(0.58778525);
-        when(sin.execute(-1.4*Math.PI)).thenReturn(0.95105652);
-        when(sin.execute(-1.6*Math.PI)).thenReturn(0.95105652);
-        when(sin.execute(-1.8*Math.PI)).thenReturn(0.58778525);
 
         when(cos.execute(-0.2*Math.PI)).thenReturn(0.80901699);
         when(cos.execute(-0.4*Math.PI)).thenReturn(0.309016999);
@@ -105,6 +96,7 @@ public class FirstStatementIntervalIT {
         when(csc.execute(-1.4*Math.PI)).thenReturn(1.0514622);
         when(csc.execute(-1.6*Math.PI)).thenReturn(1.0514622);
         when(csc.execute(-1.8*Math.PI)).thenReturn(1.7013016);
+        when(csc.execute(-1.8*Math.PI)).thenReturn(1.7013016);
     }
 
     @Parameterized.Parameters
@@ -123,11 +115,11 @@ public class FirstStatementIntervalIT {
 
     @Test
     public void pointTest(){
-        Sin delta = new Sin();
-        if(Math.abs(statement.execute(inputX) - expectedX) < delta.delta){
+        if(Math.abs(statement.execute(inputX) - expectedX) < sin.delta*5){
             Assert.assertTrue(true);
         } else {
             fail();
         }
     }
 }
+

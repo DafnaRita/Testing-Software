@@ -1,5 +1,6 @@
-package main.java.ru.DafnaRita.SoftwareTesting.Lab2;
+package main.java.ru.DafnaRita.SoftwareTesting.Lab2.Trigonometry;
 
+import org.jcp.xml.dsig.internal.dom.DOMBase64Transform;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
@@ -72,16 +73,17 @@ public class FirstStatementPointIT {
         when(sec.execute(-1.5*Math.PI)).thenReturn(Double.NaN);
         when(sec.execute(-2*Math.PI)).thenReturn(1.);
 
-        when(tan.execute(this.inputX))
-                .thenReturn(0.)
-                .thenReturn(Double.POSITIVE_INFINITY)
-                .thenReturn(0.)
-                .thenReturn(Double.POSITIVE_INFINITY);
-        when(csc.execute(this.inputX))
-                .thenReturn(Double.POSITIVE_INFINITY)
-                .thenReturn(1.)
-                .thenReturn(Double.POSITIVE_INFINITY)
-                .thenReturn(-1.);
+        when(tan.execute(0.)).thenReturn(0.);
+        when(tan.execute(-Math.PI/2)).thenReturn(Double.NaN);
+        when(tan.execute(-Math.PI)).thenReturn(-0.);
+        when(tan.execute(-1.5*Math.PI)).thenReturn(Double.NaN);
+        when(tan.execute(-2*Math.PI)).thenReturn(0.);
+
+        when(csc.execute(0.)).thenReturn(Double.NaN);
+        when(csc.execute(-Math.PI/2)).thenReturn(-1.);
+        when(csc.execute(-Math.PI)).thenReturn(Double.NaN);
+        when(csc.execute(-1.5*Math.PI)).thenReturn(1.);
+        when(csc.execute(-2*Math.PI)).thenReturn(Double.NaN);
     }
 
     @Parameterized.Parameters
