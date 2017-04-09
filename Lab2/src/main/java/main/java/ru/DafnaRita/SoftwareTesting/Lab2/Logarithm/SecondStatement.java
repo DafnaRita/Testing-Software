@@ -1,7 +1,5 @@
 package main.java.ru.DafnaRita.SoftwareTesting.Lab2.Logarithm;
 
-import java.math.BigDecimal;
-
 public class SecondStatement {
     Ln ln;
     Log2 log2;
@@ -15,27 +13,14 @@ public class SecondStatement {
         this.log5 = log5;
     }
 
-    public double pow(double x){
-        int i;
-        for(i = 0; i < 9; i++){
-            x = x * x;
-        }
-        return x;
-    }
-
     public double execute(double x){
         if(x > 0){
             return (((((ln.execute(x) / log3.execute(x)) * log5.execute(x))
                     - ln.execute(x)) / log3.execute(x))
                     + (log5.execute(x)
-                    * (this.pow(log2.execute(x)))));
+                    * (Math.pow(Math.pow(log2.execute(x), 3), 3))));
         } else{
             return Double.NaN;
         }
-        /*System.out.println("ln.execute(x)" + ln.execute(x));
-        System.out.println("log2.execute(x)" + log2.execute(x));
-        System.out.println("log3.execute(x)" + log3.execute(x));
-        System.out.println("log5.execute(x)" + log5.execute(x));*/
-        //return ln.execute(x);
     }
 }
