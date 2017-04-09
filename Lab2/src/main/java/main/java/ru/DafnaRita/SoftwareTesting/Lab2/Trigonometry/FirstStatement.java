@@ -7,6 +7,7 @@ public class FirstStatement {
     Sec sec;
     Tan tan;
     Csc csc;
+    public double delta = 0.000005;
 
     public FirstStatement(Sin sin, Cos cos, Cot cot, Sec sec, Tan tan, Csc csc){
         this.sin = sin;
